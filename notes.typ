@@ -26,9 +26,10 @@ https://anggtwu.net/tmp/chellas__modal_logic_an_introduction.pdf
   - $W$ is a set of possible worlds
   - $P$ abbreviates an inifinite sequence of $P_0, P_1, P_2,...$ which are subsets of $W$.
   - Note that $W$ might contains worlds that are not in any $P_i$, and any or all of the $P_i$ might be empty.
+#show math.models: math.class.with("normal")
 - The truth conditions for sentences are written as:
   $
-    op(models)_alpha^cal(M) A
+    models_alpha^cal(M) A
   $
   - $A$ is a sentence
   - $alpha$ is a possible world in a model $cal(M) = pair(W, P)$
@@ -68,7 +69,22 @@ https://anggtwu.net/tmp/chellas__modal_logic_an_introduction.pdf
   - Contradiction: A formula that is false in every possible interpretation (e.g.,
   - Contingency: A formula that is neither a tautology nor a contradiction (e.g., $A and B$)
   - Logical Equivalence: Two formulas are logically equivalent if they have the same truth value in every possible interpretation (e.g., $A and B$ is equivalent to $B and A$)
-
-
-
+- Modal logic extends propositional logic
+  - Every tautology in propositional logic is valid in modal logic
+- Basic theorems (adopted as axioms) and rules of inferences in S5
+  $
+               T. & quad square A -> A \
+               5. & quad diamond A -> square diamond A \
+               K. & quad square(A->B) -> (square A -> square B) \
+    "Df" diamond. & quad diamond A arrow.l.r not square not A \
+            "PL". & quad A, "where" A "is a tautology in propositional logic" \
+            "RN". & quad A / (square A) \
+            "MP." & quad (A, A -> B) / B \
+  $
+#show math.tack.short: math.class.with("normal")
+- When $A$ is a sentence, we also write $tack.short A$ to mean that A is a theorem
+- MP and PL can be replaced by RPL, which is a rule of inference that allows us to derive a theorem from a tautology in propositional logic.
+  $
+    "RPL". quad (A_1, ..., A_n) / A\ "where the inference from " A_1, ..., A_n "to" A "is a tautology in propositional logic"
+  $
 
