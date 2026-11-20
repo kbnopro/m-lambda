@@ -87,4 +87,68 @@ https://anggtwu.net/tmp/chellas__modal_logic_an_introduction.pdf
   $
     "RPL". quad (A_1, ..., A_n) / A\ "where the inference from " A_1, ..., A_n "to" A "is a tautology in propositional logic"
   $
+- Two further rules of inference can be derived from the basic theorems and rules of inference in S5:
+  $
+    "RM". quad (A -> B) / (square A -> square B) \
+    "RE". quad (A <-> B) / (square A <-> square B) \
+  $
+
+== Logic Preliminaries
+- Sentences: The language is founded on a denumerable set of atomic sentences
+  $
+    PP_0, PP_1, PP_2, ...
+  $
+  These a simplest sentences
+- The non-atomic molecular sentences are formed by means of nine syntactic operations, or operators
+  $
+    top, bot, not, and, or, ->, <->, square, diamond
+  $
+  Sentences are formed using the following rules:
+  1. $PP_n$ is a sentence for each $n = 0, 1, 2, ...$
+  2. $top$ is a sentence
+  3. $bot$ is a sentence
+  4. $not A$ is a sentence iff $A$ is a sentence
+  5. $A and B$ is a sentence iff $A$ and $B$
+  6. $A or B$ is a sentence iff $A$ and $B$ are sentences
+  7. $A -> B$ is a sentence iff $A$ and $B$ are sentences
+  8. $A <-> B$ is a sentence iff $A$ and $B$ are sentences
+  9. $square A$ is a sentence iff $A$ is a sentence
+  10. $diamond A$ is a sentence iff $A$ is a sentence
+- We use $A, B, C,...$, sometimes with superscripts or subscripts for setences, and $Gamma, Delta, E, ...$ with appurtenant (set membership) for a set of sentences.
+- Some vocabularies:
+  - $top$: the truth constant, _verum_
+  - $bot$: the falsehood constant, _falsum_ or _falsity constant_
+  - $not A$: the _negation_ of $A$, $A$ is the _negate_
+  - $A and B$: the _conjunction_ of $A$ and $B$, $A$ and $B$ are the _left conjunct_ and _right conjunct_ respectively
+  - $A or B$: the _disjunction_ of $A$ and $B$, where $A$ and $B$ are the _left disjunct_ and _right disjunct_ respectively
+  - $A <-> B$ is the biconditional of $A$ and $B$, where $A$ and $B$ is the _left_ and _right members_
+  - $A -> B$ is the conditional of $A$ and $B$, where $A$ and $B$ is the _antecedent_ and _consequent_ respectively
+  - $square A$: the _necessitation_ of $A$, $A$ is the _necessitate_
+  - $diamond A$: the _possibilitation_ of $A$, $A$ is the _possibilitate_
+  - In $square A$ and $diamond A$, A is also called the _matrix_, and $square$ and $diamond$ are called the _prefixes_.
+- Subsentences: A part of a sentence is called a _subsentence_, the set of all subsentences of a sentence $A$ is denoted by $"Sn"(A)$.
+  - A set of sentences is _closed under subsentences_ if it contains all subsentences of its members.
+
+#let null(body) = $attach(#body, tl: dot)$
+#let null = null("")
+
+- Modalities:
+  - _modality_ is any finite sequence of $square$, $diamond$, and $not$ operators, including the empty sequence. The empty sequence is called the _trivial modality_, and signified by $null$
+  - A modality is classified as _affirmative_ when $not$ occurs in it even number of times, and _negative_ otherwise.
+  - The _dual of a modality_ $phi.alt$ is the modality $phi.alt^*$  - The _dual of a modality_ mmphi.altt results from interchanging $square$ and $diamond$. Note that the affirmative or negative quality of a modality is preserved by duality, and the dual of a dual is the original modality.
+  - We write
+    $
+      phi.alt^n A
+    $
+    to indicate application of the modality $phi.alt$ to the sentence $A$ n times. This can be formally defined by induction.
+  - A set of sentences is _modally closed_ just in case $phi A$ is in the set whenever $A$ is, for every modality $phi$. The _modal closure_ of a set sentences means the result of adding to the set every moralization of $phi.alt A$ of any sentence $A$ in the set.
+
+- TODO: Re-read Software Foundations Curry-Howard Correspondence
+
+
+
+
+
+
+
 
