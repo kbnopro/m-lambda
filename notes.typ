@@ -16,12 +16,12 @@ https://anggtwu.net/tmp/chellas__modal_logic_an_introduction.pdf
     P_0, P_1, P_2, ...
   $
   where $P_i$ is the set of possible worlds in which $PP_i$ is true. Hence, $PP_n$ is true at a possible world $alpha$ if and only if $alpha in P_n$.
-#let pair(X, Y) = {
-  $chevron #X, #Y chevron.r$
+#let model(..args) = {
+  $chevron #args.pos().map(label => [#label]).join($,$) chevron.r$
 }
 - A model can be defined as a pair
   $
-    pair(W, P)
+    model(W, P)
   $
   - $W$ is a set of possible worlds
   - $P$ abbreviates an inifinite sequence of $P_0, P_1, P_2,...$ which are subsets of $W$.
@@ -32,7 +32,7 @@ https://anggtwu.net/tmp/chellas__modal_logic_an_introduction.pdf
     models_alpha^cal(M) A
   $
   - $A$ is a sentence
-  - $alpha$ is a possible world in a model $cal(M) = pair(W, P)$
+  - $alpha$ is a possible world in a model $cal(M) = model(W, P)$
   - This is short for $A$ is true at $alpha$ in $cal(M)$
 - Truth conditions example:
   1. $op(models)_alpha^cal(M) PP_n "iff" alpha in P_n quad "for" n = 0,1,2,...$\
@@ -94,6 +94,7 @@ https://anggtwu.net/tmp/chellas__modal_logic_an_introduction.pdf
   $
 
 == Logic Preliminaries
+=== Syntax
 - Sentences: The language is founded on a denumerable set of atomic sentences
   $
     PP_0, PP_1, PP_2, ...
@@ -115,40 +116,80 @@ https://anggtwu.net/tmp/chellas__modal_logic_an_introduction.pdf
   9. $square A$ is a sentence iff $A$ is a sentence
   10. $diamond A$ is a sentence iff $A$ is a sentence
 - We use $A, B, C,...$, sometimes with superscripts or subscripts for setences, and $Gamma, Delta, E, ...$ with appurtenant (set membership) for a set of sentences.
-- Some vocabularies:
-  - $top$: the truth constant, _verum_
-  - $bot$: the falsehood constant, _falsum_ or _falsity constant_
-  - $not A$: the _negation_ of $A$, $A$ is the _negate_
-  - $A and B$: the _conjunction_ of $A$ and $B$, $A$ and $B$ are the _left conjunct_ and _right conjunct_ respectively
-  - $A or B$: the _disjunction_ of $A$ and $B$, where $A$ and $B$ are the _left disjunct_ and _right disjunct_ respectively
-  - $A <-> B$ is the biconditional of $A$ and $B$, where $A$ and $B$ is the _left_ and _right members_
-  - $A -> B$ is the conditional of $A$ and $B$, where $A$ and $B$ is the _antecedent_ and _consequent_ respectively
-  - $square A$: the _necessitation_ of $A$, $A$ is the _necessitate_
-  - $diamond A$: the _possibilitation_ of $A$, $A$ is the _possibilitate_
-  - In $square A$ and $diamond A$, A is also called the _matrix_, and $square$ and $diamond$ are called the _prefixes_.
-- Subsentences: A part of a sentence is called a _subsentence_, the set of all subsentences of a sentence $A$ is denoted by $"Sn"(A)$.
-  - A set of sentences is _closed under subsentences_ if it contains all subsentences of its members.
+==== Vocabularies
+- $top$: the truth constant, _verum_
+- $bot$: the falsehood constant, _falsum_ or _falsity constant_
+- $not A$: the _negation_ of $A$, $A$ is the _negate_
+- $A and B$: the _conjunction_ of $A$ and $B$, $A$ and $B$ are the _left conjunct_ and _right conjunct_ respectively
+- $A or B$: the _disjunction_ of $A$ and $B$, where $A$ and $B$ are the _left disjunct_ and _right disjunct_ respectively
+- $A <-> B$ is the biconditional of $A$ and $B$, where $A$ and $B$ is the _left_ and _right members_
+- $A -> B$ is the conditional of $A$ and $B$, where $A$ and $B$ is the _antecedent_ and _consequent_ respectively
+- $square A$: the _necessitation_ of $A$, $A$ is the _necessitate_
+- $diamond A$: the _possibilitation_ of $A$, $A$ is the _possibilitate_
+- In $square A$ and $diamond A$, A is also called the _matrix_, and $square$ and $diamond$ are called the _prefixes_.
+==== Subsentences
+- A part of a sentence is called a _subsentence_, the set of all subsentences of a sentence $A$ is denoted by $"Sn"(A)$.
+- A set of sentences is _closed under subsentences_ if it contains all subsentences of its members.
+
+==== Modalities
 
 #let null(body) = $attach(#body, tl: dot)$
 #let null = null("")
 
-- Modalities:
-  - _modality_ is any finite sequence of $square$, $diamond$, and $not$ operators, including the empty sequence. The empty sequence is called the _trivial modality_, and signified by $null$
-  - A modality is classified as _affirmative_ when $not$ occurs in it even number of times, and _negative_ otherwise.
-  - The _dual of a modality_ $phi.alt$ is the modality $phi.alt^*$  - The _dual of a modality_ mmphi.altt results from interchanging $square$ and $diamond$. Note that the affirmative or negative quality of a modality is preserved by duality, and the dual of a dual is the original modality.
-  - We write
-    $
-      phi.alt^n A
-    $
-    to indicate application of the modality $phi.alt$ to the sentence $A$ n times. This can be formally defined by induction.
-  - A set of sentences is _modally closed_ just in case $phi A$ is in the set whenever $A$ is, for every modality $phi$. The _modal closure_ of a set sentences means the result of adding to the set every moralization of $phi.alt A$ of any sentence $A$ in the set.
+- _modality_ is any finite sequence of $square$, $diamond$, and $not$ operators, including the empty sequence. The empty sequence is called the _trivial modality_, and signified by $null$
+- A modality is classified as _affirmative_ when $not$ occurs in it even number of times, and _negative_ otherwise.
+- The _dual of a modality_ $phi.alt$ is the modality $phi.alt^*$  - The _dual of a modality_ mmphi.altt results from interchanging $square$ and $diamond$. Note that the affirmative or negative quality of a modality is preserved by duality, and the dual of a dual is the original modality.
+- We write
+  $
+    phi.alt^n A
+  $
+  to indicate application of the modality $phi.alt$ to the sentence $A$ n times. This can be formally defined by induction.
+- A set of sentences is _modally closed_ just in case $phi A$ is in the set whenever $A$ is, for every modality $phi$. The _modal closure_ of a set sentences means the result of adding to the set every moralization of $phi.alt A$ of any sentence $A$ in the set.
 
-- TODO: Re-read Software Foundations Curry-Howard Correspondence
+==== Replacement
+- Give sentences $A, B, B'$, we wish to consider a sentence that results from replacing some occurrences of $B$ in $A$ with $B'$. This is denoted as:
+  $
+    A[B\/B']
+  $
 
+==== Duality
+- Without $->$ and $<->$, the _dual of a sentence_ $A$, written as $A^*$, is the result of replacing atomic sentence by its negation, $not$ by $not$, $and$ by $or$, $square$ by $diamond$, and vice versa.
+- We need a more complex definition with $->$ and $<->$:
+  1. $PP_n^* = not PP_N, "for" n = 0,1,2,...$
+  2. $top^* = bot$
+  3. $bot^* = top$
+  4. $(not A)^* = not (A^*)$
+  5. $(A and B)^* = A^* or B^*$
+  6. $(A or B)^* = A^* and B^*$
+  7. $(A->B)^* = not (A^*) and B^*$
+  8. $(A <-> B)^* = A^* <-> not (B^*)$
+  9. $(square A)^* = diamond (A^*)$
+  10. $(diamond A)^* = square (A^*)$
 
+==== Schemas
+- A schema we mean a set of sentence of particular form. For example
+  $
+    5. quad diamond A -> square diamond A
+  $
+- An _instance_ of a schema is a member of the set of sentences that the schema represents. For example, $diamond PP_0 -> square diamond PP_0$ is an instance of the schema $5$.
 
+==== Decidability
+- A set of sentences $Gamma$ is _decidable_ just in case there is a decision procedure for determining whether or not it is in $Gamma$.
+- A weaker notion is _effectively enumerable_, which means there is a effective method for telling any sentence in $Gamma$ that it is in $Gamma$, but not necessarily for telling any sentence not in $Gamma$ that it is not in $Gamma$. We say there is a _positive test_ for membership in $Gamma$. Similarly, _negative test_ is defined.
+- A set of sentences is _decidable_ if both it and its complement are effectively enumerable.
 
+=== Models, truth and validity
+- The set $W$ of possible worlds and the assignment $P$ of truth values, so we may describe a model in the sense as a structure
+  $
+    cal(M) = model(W, ..., P)
+  $
+  where #enum(numbering: "(i)")[
+    $W$ is a set
+  ][
+    $P$ is a function on the set ${0,1,2,...}$ such that for each number $n$, $PP_n subset.eq W$
+  ]
+- A model is _finite_ if its set of worlds has finitely many elements; otherwise it is _infinite_.
 
-
-
+= Reconstruction of Modal Logic
+https://www.cs.cmu.edu/~fp/papers/mscs00.pdf
 
